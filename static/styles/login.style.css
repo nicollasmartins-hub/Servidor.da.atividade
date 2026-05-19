@@ -1,0 +1,87 @@
+:root{
+    --blue-inf: #0072b9;
+}
+
+*{
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+#container{
+    background-color: var(--blue-inf);
+    height: 100vh;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    font-family: Arial, sans-serif;
+
+    h3{
+        color: white;
+    }
+    
+    form{
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        @media (max-width: 768px) {
+            width: 85%;
+        }
+        @media (min-width: 769px) {
+            width: 25%; /* Ajustado para dar excelente destaque na caixinha de busca */
+        }
+        padding: 1.5rem;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        div{
+            width: 100%; /* Mudado de 80% para 100% para ocupar melhor o espaço */
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            gap: .5rem;
+
+            label {
+                font-weight: bold;
+                color: #333;
+                font-size: 0.9rem;
+            }
+
+            input{
+                border-radius: 6px;
+                width: 100%;
+                padding: 8px; /* Espaço confortável para digitar o CPF */
+                border: solid 1px var(--blue-inf);
+                &:focus{
+                    transition: all .3s ease-in-out;
+                    outline: none;
+                    transform: scale(1.03); /* Zoom sutil para não quebrar as bordas do form */
+                }
+            }
+        }
+
+        button[type = "submit"]{
+            border: solid 1px var(--blue-inf);
+            background-color: var(--blue-inf); /* Botão preenchido em azul */
+            color: white;
+            font-weight: bold;
+            padding: 10px 16px;
+            border-radius: 6px;
+            width: 100%; /* Botão largo, muito mais fácil de clicar */
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+
+            &:hover {
+                background-color: #005a93; /* Efeito de destaque ao passar o mouse */
+            }
+        }
+    }
+}

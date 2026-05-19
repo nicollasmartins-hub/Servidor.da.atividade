@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica - Buscar Prontuário</title>
+    <link rel="stylesheet" href="../styles/readPatient.style.css">
+</head>
+
+<body>
+    <div id="container">
+        <h3>Consultar Paciente</h3>
+        
+        <form method="POST" action="/readPatient">
+            <div>
+                <label>CPF do Paciente:</label>
+                <input name="cpf" placeholder="Digite o CPF (apenas números)" type="text" required>
+            </div>
+
+            <button type="submit"><span>Buscar Prontuário</span></button>
+        </form>
+    </div>
+
+</body>
+
+</html>

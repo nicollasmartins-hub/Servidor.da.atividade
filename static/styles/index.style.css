@@ -1,0 +1,76 @@
+*{
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #f4f7f6; /* Um fundo cinza bem claro, clássico de sistemas médicos */
+    font-family: Arial, sans-serif;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+
+    /* Estilo para o título principal da clínica */
+    h1, h2 {
+        color: #0072b9;
+        margin-bottom: 0.5rem;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+    ul {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+
+        /* Transformando os links da lista em botões elegantes */
+        li a {
+            display: inline-block;
+            background-color: #0072b9;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: #005a93;
+                transform: translateY(-2px); /* Efeito sutil de flutuar ao passar o mouse */
+            }
+        }
+    }
+}
+
+/* Deixando a lista responsiva em celulares (os botões ficam um embaixo do outro) */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    ul {
+        flex-direction: column;
+        gap: 0.8rem;
+        width: 100%;
+        
+        li a {
+            display: block;
+            width: 100%;
+        }
+    }
+}

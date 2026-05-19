@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica - Cadastro de Paciente</title>
+    <link rel="stylesheet" href="../styles/createPatient.style.css">
+</head>
+
+<body>
+    <div id="container">
+        <h3>Cadastro de Novo Paciente</h3>
+        <form method="POST" action="/createPatient">
+            <div>
+                <label>Nome Completo:</label>
+                <input name="fullName" placeholder="Digite o nome do paciente" value="" type="text" required>
+            </div>
+            <div>
+                <label>CPF:</label>
+                <input name="cpf" placeholder="Apenas números" value="" type="text" required>
+            </div>
+            <div>
+                <label>Data de Nascimento:</label>
+                <input name="birthDate" value="" type="date" required>
+            </div>
+            <div>
+                <label>Sintomas / Motivo da Consulta:</label>
+                <input name="symptoms" placeholder="Descreva os sintomas" value="" type="text" required>
+            </div>
+
+            <button type="submit"><span>Cadastrar Paciente</span></button>
+        </form>
+    </div>
+
+</body>
+
+</html>

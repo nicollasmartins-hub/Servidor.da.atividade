@@ -1,0 +1,99 @@
+:root {
+    --primary-color: #0072b9;
+    --background-color: #f4f4f9;
+    --text-color: #333;
+    --card-background: #fff;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#container {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--card-shadow);
+    width: 90%;
+    max-width: 500px; /* Reduzi levemente para ficar mais compacto e elegante */
+    text-align: center;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Estrutura dos blocos de informação do paciente */
+div {
+    margin-bottom: 1.2rem;
+    text-align: left; /* Alinha os textos e labels para a esquerda */
+}
+
+strong {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+p {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 6px;
+    color: #333;
+    font-size: 1rem;
+    margin-top: 4px;
+    border-left: 3px solid var(--primary-color); /* Detalhe visual na lateral do dado */
+}
+
+/* NOVO: Estilo especial e destacado para o último bloco de texto (o Status do Paciente) */
+div:last-of-type p {
+    background-color: #e2f0d9;
+    color: #385723;
+    border-left: 3px solid #385723;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Estilo para o link/botão de voltar para a busca */
+a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: 2rem;
+    transition: background-color 0.2s ease;
+}
+
+a:hover {
+    background-color: #005a93;
+}
+
+@media (max-width: 768px) {
+    #container {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}

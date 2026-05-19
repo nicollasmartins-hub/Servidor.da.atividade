@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica - Atualizar Prontuário</title>
+    <link rel="stylesheet" href="../styles/updatePatient.style.css">
+</head>
+
+<body>
+    <div id="container">
+        <h3>Atualizar Dados do Paciente</h3>
+        
+        <form method="POST" action="/updatePatient">
+            
+            <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #ddd;">
+                <label><strong>CPF do Paciente (Obrigatório):</strong></label>
+                <input name="cpf" placeholder="Digite o CPF para localizar" type="text" required>
+            </div>
+
+            <p style="font-size: 0.9em; color: #555; margin-bottom: 15px;">
+                Preencha apenas o que deseja atualizar:
+            </p>
+
+            <div>
+                <label>Novo Status:</label>
+                <select name="status" style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="">(Manter o mesmo status)</option>
+                    <option value="Aguardando Triagem">Aguardando Triagem</option>
+                    <option value="Em Atendimento Médico">Em Atendimento Médico</option>
+                    <option value="Aguardando Exames">Aguardando Exames</option>
+                    <option value="Em Observação">Em Observação</option>
+                </select>
+            </div>
+            
+            <div style="margin-top: 15px;">
+                <label>Novos Sintomas / Observações:</label>
+                <input name="symptoms" placeholder="Atualize o quadro clínico (opcional)" type="text">
+            </div>
+
+            <button type="submit" style="margin-top: 20px;"><span>Atualizar Prontuário</span></button>
+        </form>
+    </div>
+</body>
+
+</html>

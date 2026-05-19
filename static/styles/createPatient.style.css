@@ -1,0 +1,96 @@
+:root{
+    --blue-inf: #0072b9;
+}
+
+*{
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+#container{
+    background-color: var(--blue-inf);
+    height: 100vh;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    font-family: Arial, sans-serif; /* Uma fonte padrão limpa para o sistema */
+
+    h3{
+        color: white;
+    }
+    
+    form{
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        @media (max-width: 768px) {
+            width: 80%;
+        }
+        @media (min-width: 769px) {
+            width: 25%; /* Aumentei de 20% para 25% para dar mais espaço aos textos médicos */
+        }
+        padding: 1.5rem;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        div{
+            width: 100%; /* Mudado de 80% para 100% para o formulário ficar mais imponente */
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            gap: .5rem;
+
+            /* Estilo dos campos de texto, data e afins */
+            input{
+                border-radius: 6px;
+                width: 100%;
+                padding: 8px; /* Adicionado um preenchimento interno para ficar mais fácil de digitar */
+                border: solid 1px var(--blue-inf);
+                &:focus{
+                    transition: all .5s ease-in-out;
+                    outline: none;
+                    transform: scale(1.05); /* Reduzi levemente o zoom de 1.1 para 1.05 para o input não cortar nas bordas */
+                }
+            }
+
+            /* NOVO: Aplica exatamente o mesmo estilo do input ao nosso dropdown de Status */
+            select {
+                border-radius: 6px;
+                width: 100%;
+                padding: 8px;
+                border: solid 1px var(--blue-inf);
+                background-color: white;
+                &:focus{
+                    transition: all .5s ease-in-out;
+                    outline: none;
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        button[type = "submit"]{
+            border: solid 1px var(--blue-inf);
+            background-color: var(--blue-inf); /* Pintamos o botão com o azul padrão */
+            color: white; /* Letra branca */
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%; /* Botão largo para cliques mais fáceis */
+            font-weight: bold;
+            transition: background .3s;
+
+            &:hover {
+                background-color: #005a93; /* Escurece um pouco ao passar o mouse */
+            }
+        }
+    }
+}
