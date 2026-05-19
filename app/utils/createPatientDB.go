@@ -4,13 +4,10 @@ import (
 	"log"
 )
 
-// CreatePatientDB insere um novo paciente no banco de dados
-func CreatePatientDB(fullName, cpf, birthDate, symptoms string) error {
-	// Atualizamos a query para inserir na tabela de pacientes
-	query := `INSERT INTO patients (full_name, cpf, birth_date, symptoms) VALUES ($1, $2, $3, $4)`
+func CreatePatientDB(fullName, cpf, birthDate, phone, symptoms string) error {
+	query := `INSERT INTO patients (full_name, cpf, birth_date, phone, symptoms) VALUES ($1, $2, $3, $4, $5)`
 
-	// Executamos a query passando os dados do paciente
-	_, err := DB.Exec(query, fullName, cpf, birthDate, symptoms)
+	_, err := DB.Exec(query, fullName, cpf, birthDate, phone, symptoms)
 	if err != nil {
 		log.Printf("Erro ao inserir paciente no banco de dados: %v", err)
 		return err
