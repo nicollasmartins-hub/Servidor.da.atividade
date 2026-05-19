@@ -1,27 +1,114 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica - Buscar Prontuário</title>
-    <link rel="stylesheet" href="../styles/readPatient.style.css">
+    <title>Clínica Médica - Buscar Prontuário</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+<body class="bg-slate-100 font-sans min-h-screen flex items-center justify-center p-4">
 
-<body>
-    <div id="container">
-        <h3>Consultar Paciente</h3>
-        
-        <form method="POST" action="/readPatient">
+    <div class="bg-white p-8 rounded-2xl shadow-lg max-w-md w-full relative">
+
+        <a href="/" class="absolute top-6 left-6 text-slate-400 hover:text-slate-600 text-sm flex items-center gap-1">
+            ⬅ Voltar
+        </a>
+
+        <div class="text-center mb-8 mt-4">
+            <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl font-bold">
+                🔍
+            </div>
+            <h1 class="text-2xl font-bold text-slate-800">Consultar Paciente</h1>
+            <p class="text-sm text-slate-500 mt-1">Busque pelo CPF para ver o prontuário</p>
+        </div>
+
+        <div class="space-y-5">
             <div>
-                <label>CPF do Paciente:</label>
-                <input name="cpf" placeholder="Digite o CPF (apenas números)" type="text" required>
+                <label class="block text-sm font-semibold text-slate-700 mb-1">CPF do Paciente</label>
+                <input
+                    id="inputCPF"
+                    type="text"
+                    placeholder="Apenas números"
+                    class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-slate-800"
+                >
             </div>
 
-            <button type="submit"><span>Buscar Prontuário</span></button>
-        </form>
+            <button onclick="buscarPaciente()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition shadow-md hover:shadow-lg active:scale-[0.98] cursor-pointer">
+                Buscar Prontuário
+            </button>
+        </div>
+
+        <!-- Área de resultado -->
+        <div id="resultado" class="mt-6 hidden">
+            <div class="border-t border-slate-200 pt-5">
+                <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">Dados do Paciente</h2>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-slate-500">Nome</span>
+                        <span id="res-nome" class="font-medium text-slate-800"></span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-slate-500">CPF</span>
+                        <span id="res-cpf" class="font-medium text-slate-800"></span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-slate-500">Nascimento</span>
+                        <span id="res-nascimento" class="font-medium text-slate-800"></span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-slate-500">Telefone</span>
+                        <span id="res-telefone" class="font-medium text-slate-800"></span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-slate-500">Sintomas</span>
+                        <span id="res-sintomas" class="font-medium text-slate-800"></span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-slate-500">Status</span>
+                        <span id="res-status" class="font-medium text-slate-800"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensagem de erro -->
+        <div id="erro" class="mt-4 hidden text-center text-sm text-red-500 font-medium">
+            ❌ Paciente não encontrado.
+        </div>
+
     </div>
 
-</body>
+    <script>
+        function buscarPaciente() {
+            const cpf = document.getElementById("inputCPF").value.trim();
 
+            if (!cpf) {
+                alert("Digite um CPF para buscar.");
+                return;
+            }
+
+            document.getElementById("resultado").classList.add("hidden");
+            document.getElementById("erro").classList.add("hidden");
+
+            fetch(`/readPatient?cpf=${cpf}`)
+                .then(res => {
+                    if (!res.ok) throw new Error("não encontrado");
+                    return res.json();
+                })
+                .then(p => {
+                    document.getElementById("res-nome").textContent = p.full_name;
+                    document.getElementById("res-cpf").textContent = p.cpf;
+                    document.getElementById("res-nascimento").textContent = p.birth_date.split("T")[0].split("-").reverse().join("-");
+                    document.getElementById("res-telefone").textContent = p.phone;
+                    document.getElementById("res-sintomas").textContent = p.symptoms;
+                    document.getElementById("res-status").textContent = p.status;
+                    document.getElementById("resultado").classList.remove("hidden");
+                })
+                .catch(() => {
+                    document.getElementById("erro").classList.remove("hidden");
+                });
+        }
+    </script>
+
+</body>
 </html>
