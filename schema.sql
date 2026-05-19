@@ -5,5 +5,6 @@ CREATE TABLE patients (
     birth_date DATE NOT NULL,
     phone VARCHAR(20) NOT NULL,
     symptoms TEXT,
+    status VARCHAR(50) DEFAULT 'Aguardando Triagem',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
